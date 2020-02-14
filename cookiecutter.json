@@ -1,0 +1,36 @@
+{
+    "full_name": "John Doe",
+    "email": "john.doe@example.com",
+    "vs": [
+        "github",
+        "bitbucket"
+    ],
+    "vs_url": "{% if cookiecutter.vs|lower == 'github' %}github.com{% else %}bitbucket.your_org.com{% endif %}",
+    "vs_account": "{% if cookiecutter.vs|lower == 'github' %}tomtom-international{% else %}NAV{% endif %}",
+
+    "open_source_project": "{% if cookiecutter.vs|lower == 'bitbucket'%}n{% else %}y{% endif %}",
+
+    "project_name": "python-skeleton",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "project_short_description": "Describe in a short sentence your Python package.",
+    "version": "0.0.1-dev",
+
+    "use_black_formatter": "n",
+    "use_spellcheck": "n",
+
+    "use_tox": "n",
+    "use_makefile": "n",
+
+    "ci": "{% if cookiecutter.vs|lower == 'github' %}azure{% else %}jenkins{% endif %}",
+    "ci_url": "{% if cookiecutter.ci|lower == 'azure' %}https://dev.azure.com{% else %}https://jenkins.your_org.com{% endif %}",
+    "ci_org_name": "{% if cookiecutter.ci|lower == 'azure' %}tomtomweb{% else %}{% endif %}",
+    "ci_project_name": "{% if cookiecutter.ci|lower == 'azure' %}GitHub-TomTom-International{% else %}{{ cookiecutter.vs_account }}{% endif %}",
+    "pypi_repo": "{% if cookiecutter.ci|lower == 'azure' %}https://pypi.org/legacy/{% else %}https://artifactory.your_org.com/artifactory/api/pypi/pypi-local{% endif %}",
+    "pypi_credentials_id": "{% if cookiecutter.ci|lower == 'azure' %}testpypi-tomtom-dev{% else %}artifactory-pypi{% endif %}",
+    "docker_registry_credentials_id": "{% if cookiecutter.ci|lower == 'azure' %}tomtom-docker-registry-bintray{% else %}artifactory-docker{% endif %}",
+    "azure_build_definition_id": "{% if cookiecutter.ci|lower == 'azure' %}5{% else %}N/A{% endif %}",
+    "jenkins_scm_credentials_id": "{% if cookiecutter.ci|lower == 'jenkins' %}bitbucket_user{% else %}N/A{% endif %}",
+    "build_command": "python setup.py build",
+    "lint_command": "python setup.py lint --lint-output-format parseable",
+    "test_command": "python setup.py test --addopts '--cov-report xml:build/coverage.xml --cov-report term --cov-branch --junitxml=build/test_results.xml'"
+}

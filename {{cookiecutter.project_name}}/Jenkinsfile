@@ -1,0 +1,13 @@
+@Library(value="github.com/tomtom-international/jsl@master", changelog=false) _
+
+pythonSetupPyPipeline \
+  dockerDeploy: true, \
+  dockerRegistryCredentialsId: "{{ cookiecutter.docker_registry_credentials_id }}", \
+  dockerRegistryUrl: "https://docker.navkit-pipeline.tt3.com", \
+  dockerRepo: "python", \
+  pypiRepo: "{{ cookiecutter.pypi_repo }}", \
+  pypiCredentialsId: "{{ cookiecutter.pypi_credentials_id }} ", \
+  scmCredentialsId: "{{ cookiecutter.jenkins_scm_credentials_id }}", \
+  buildCommand: "{{ cookiecutter.build_command }}", \
+  lintCommand: "{{ cookiecutter.lint_command }}", \
+  testCommand: "{{ cookiecutter.test_command }}"

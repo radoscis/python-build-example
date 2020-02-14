@@ -1,0 +1,14 @@
+include CHANGELOG.md
+include CONTRIBUTING.md
+include README.md
+{% if cookiecutter.open_source_project|lower == "y" -%}
+include AUTHORS.md
+include LICENSE
+{%- endif %}
+
+recursive-include tests *
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+
+recursive-include docs *.md conf.py{% if cookiecutter.use_makefile|lower == "y" %} Makefile make.bat{% endif %} *.jpg *.png *.gif
